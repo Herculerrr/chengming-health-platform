@@ -38,7 +38,7 @@ app.innerHTML = `
     <div class="toast" role="status" aria-live="polite"></div>
     <div class="modal-backdrop" aria-hidden="true"><section class="booking-modal" role="dialog" aria-modal="true" aria-labelledby="booking-title"><button class="modal-close" aria-label="关闭">×</button><p class="eyebrow">智能挂号</p><h2 id="booking-title">为你推荐合适的号</h2><p class="modal-sub">根据就诊诉求、近期记录与可约时间综合推荐</p><div class="symptom-label">这次主要想解决</div><div class="symptom-options"><button class="symptom-option selected" data-symptom="sleep">睡眠与疲惫</button><button class="symptom-option" data-symptom="pressure">血压管理</button><button class="symptom-option" data-symptom="general">综合咨询</button></div><div class="recommend-label"><span>推荐号源</span><small>推荐仅供参考，急症请及时就医</small></div><div class="doctor-options"><button class="doctor-option selected" data-doctor="周予安医生" data-meta="全科 · 视频问诊" data-times="15:30,16:00,17:30"><span class="doctor-avatar large">周</span><span class="doctor-info"><b>周予安医生 <i>最匹配</i></b><small>全科 · 擅长睡眠与慢病管理</small><em>最快 周五 15:30</em></span><span class="match-score">94%</span></button><button class="doctor-option" data-doctor="韩清医生" data-meta="睡眠门诊 · 到院就诊" data-times="09:00,10:30,14:00"><span class="doctor-avatar large coral">韩</span><span class="doctor-info"><b>韩清医生</b><small>睡眠门诊 · 专注失眠评估</small><em>最快 周六 09:00</em></span><span class="match-score">88%</span></button></div><div class="schedule-head"><strong class="selected-doctor">周予安医生 · 全科 · 视频问诊</strong><span>选择时间</span></div><div class="date-options"><button class="date-option selected"><b>14</b><small>周五</small></button><button class="date-option"><b>15</b><small>周六</small></button><button class="date-option"><b>17</b><small>周一</small></button><button class="date-option"><b>18</b><small>周二</small></button></div><div class="time-label">可选时段</div><div class="time-options"><button class="time-option selected">15:30</button><button class="time-option">16:00</button><button class="time-option">17:30</button></div><button class="primary-btn confirm-booking">确认预约 <span>↗</span></button></section></div>
     <aside class="record-drawer" aria-hidden="true"><button class="drawer-close" aria-label="关闭">×</button><p class="eyebrow">健康档案</p><h2>林晓宁的健康摘要</h2><p class="drawer-sub">最近更新于今天 09:42</p><div class="drawer-stat"><span>当前关注</span><strong>睡眠质量</strong><b>↗ 8%</b></div><div class="drawer-stat"><span>近期检查</span><strong>2 份报告</strong><b class="neutral">均已查看</b></div><div class="drawer-stat"><span>用药依从</span><strong>96%</strong><b>本周稳定</b></div><button class="outline-btn">下载完整档案 <span>↓</span></button></aside>
-    <div class="triage-backdrop" aria-hidden="true"><section class="triage-modal" role="dialog" aria-modal="true" aria-labelledby="triage-title"><button class="triage-close" aria-label="关闭">×</button><p class="eyebrow">智医速诊 · 辅助分诊</p><h2 id="triage-title">先告诉我们，哪里不舒服？</h2><p class="triage-note">这是就医路径建议，不是诊断。若出现呼吸困难、意识异常或持续胸痛，请立即拨打急救电话。</p><div class="triage-symptoms"><button class="triage-symptom selected" data-level="low"><span>◌</span><b>一般不适</b><small>发热、咳嗽、轻微疼痛</small></button><button class="triage-symptom" data-level="mid"><span>＋</span><b>需要尽快评估</b><small>持续高热、明显腹痛、头晕</small></button><button class="triage-symptom urgent" data-level="high"><span>!</span><b>可能需要急诊</b><small>胸痛、呼吸困难、意识改变</small></button></div><div class="triage-result"><div class="result-label">当前建议路径</div><strong class="result-title">优先预约全科门诊</strong><p class="result-copy">当前描述更适合先由全科医生评估，预计等待 15 分钟。系统会根据现场资源动态调整。</p><div class="result-meta"><span>推荐科室 <b class="result-dept">全科门诊</b></span><span>预计等待 <b class="result-wait">15 分钟</b></span></div></div><button class="primary-btn triage-confirm">查看可用路径 <span>↗</span></button></section></div>
+    <div class="triage-backdrop" aria-hidden="true"><section class="triage-modal" role="dialog" aria-modal="true" aria-labelledby="triage-title"><button class="triage-close" aria-label="关闭">×</button><div class="triage-wizard"><div class="wizard-progress"><span class="wizard-step active">1</span><i></i><span class="wizard-step">2</span><i></i><span class="wizard-step">3</span><i></i><span class="wizard-step">4</span><b>症状采集 · 约 1 分钟</b></div><p class="eyebrow">智医速诊 · 辅助分诊</p><h2 id="triage-title">先告诉我们，哪里不舒服？</h2><p class="triage-note">这是就医路径建议，不是诊断。若出现呼吸困难、意识异常或持续胸痛，请立即拨打急救电话。</p><div class="wizard-question active" data-question="1"><strong>1 / 4　主要症状是什么？</strong><div class="triage-symptoms"><button class="triage-symptom selected" data-answer="general"><span>◌</span><b>一般不适</b><small>发热、咳嗽、轻微疼痛</small></button><button class="triage-symptom" data-answer="pain"><span>＋</span><b>明显疼痛</b><small>胸部、腹部或头部疼痛</small></button><button class="triage-symptom urgent" data-answer="breath"><span>!</span><b>呼吸或意识异常</b><small>呼吸困难、晕厥、意识改变</small></button></div></div><div class="wizard-question" data-question="2"><strong>2 / 4　症状持续了多久？</strong><div class="choice-grid"><button class="detail-choice selected" data-answer="short">刚刚出现</button><button class="detail-choice" data-answer="day">几个小时到一天</button><button class="detail-choice" data-answer="long">超过一天</button></div></div><div class="wizard-question" data-question="3"><strong>3 / 4　现在的严重程度？</strong><div class="choice-grid"><button class="detail-choice selected" data-answer="mild">可以正常活动</button><button class="detail-choice" data-answer="medium">影响日常活动</button><button class="detail-choice" data-answer="severe">难以忍受或持续加重</button></div></div><div class="wizard-question" data-question="4"><strong>4 / 4　是否存在这些危险信号？</strong><div class="choice-grid"><button class="detail-choice selected" data-answer="none">没有</button><button class="detail-choice" data-answer="risk">高热不退、冷汗或持续呕吐</button><button class="detail-choice" data-answer="critical">胸痛、气促、单侧无力或意识异常</button></div></div><div class="wizard-footer"><button class="text-btn wizard-back" disabled>← 上一步</button><button class="primary-btn wizard-next">下一步 <span>→</span></button></div><div class="triage-result"><div class="result-label">综合建议 · 基于症状、持续时间、严重程度与危险信号</div><strong class="result-title">优先预约全科门诊</strong><p class="result-copy">完成问答后，这里会展示可解释的分诊建议与预计等待时间。</p><div class="result-meta"><span>推荐科室 <b class="result-dept">待评估</b></span><span>优先级 <b class="result-wait">待评估</b></span></div></div></div></section></div>
   </div>`;
 
 const toast = document.querySelector(".toast");
@@ -63,6 +63,9 @@ document.querySelectorAll("[data-action]").forEach((el) =>
     event.preventDefault();
     const action = el.dataset.action;
     if (action.includes("急诊分诊")) {
+      triageQuestion = 1;
+      Object.keys(triageAnswers).forEach((key) => delete triageAnswers[key]);
+      updateTriageWizard();
       triageModal.classList.add("open");
       triageModal.setAttribute("aria-hidden", "false");
       return;
@@ -93,42 +96,96 @@ modal.addEventListener("click", (event) => {
 triageModal.addEventListener("click", (event) => {
   if (event.target === triageModal) closeOverlays();
 });
-const triageCopy = {
-  low: {
-    title: "优先预约全科门诊",
-    copy: "当前描述更适合先由全科医生评估，预计等待 15 分钟。系统会根据现场资源动态调整。",
-    dept: "全科门诊",
-    wait: "15 分钟",
-  },
-  mid: {
-    title: "建议前往急诊评估",
-    copy: "建议尽快到院，由分诊护士进行现场评估。当前急诊预计等待 28 分钟。",
-    dept: "急诊分诊台",
-    wait: "28 分钟",
-  },
-  high: {
-    title: "请立即前往急诊",
-    copy: "当前描述可能需要优先处理。请尽快到达急诊，并在现场由医护人员完成 ESI 分级。",
-    dept: "急诊绿色通道",
-    wait: "优先接诊",
-  },
+let triageQuestion = 1;
+const triageAnswers = {};
+const updateTriageWizard = () => {
+  document
+    .querySelectorAll(".wizard-question")
+    .forEach((item) =>
+      item.classList.toggle(
+        "active",
+        Number(item.dataset.question) === triageQuestion,
+      ),
+    );
+  document
+    .querySelectorAll(".wizard-step")
+    .forEach((item, index) =>
+      item.classList.toggle("active", index < triageQuestion),
+    );
+  document.querySelector(".wizard-back").disabled = triageQuestion === 1;
+  document.querySelector(".wizard-next").innerHTML =
+    triageQuestion === 4
+      ? "生成路径建议 <span>↗</span>"
+      : "下一步 <span>→</span>";
 };
-document.querySelectorAll(".triage-symptom").forEach((el) =>
+const calculateTriage = () => {
+  const urgent =
+    triageAnswers.symptom === "breath" ||
+    triageAnswers.severity === "severe" ||
+    triageAnswers.risk === "critical";
+  const elevated =
+    triageAnswers.symptom === "pain" ||
+    triageAnswers.duration === "long" ||
+    triageAnswers.severity === "medium" ||
+    triageAnswers.risk === "risk";
+  const result = urgent
+    ? {
+        title: "请立即前往急诊绿色通道",
+        copy: "已识别到需要优先排查的危险信号。请尽快到达急诊，由分诊护士完成现场 ESI 分级，系统建议优先接诊。",
+        dept: "急诊绿色通道",
+        wait: "优先接诊",
+      }
+    : elevated
+      ? {
+          title: "建议尽快前往急诊评估",
+          copy: "症状的持续时间或影响程度提示需要尽快评估。系统建议前往急诊分诊台，当前预计等待约 28 分钟。",
+          dept: "急诊分诊台",
+          wait: "约 28 分钟",
+        }
+      : {
+          title: "优先预约全科门诊",
+          copy: "当前信息更适合先由全科医生评估，预计等待约 15 分钟。院内资源变化时，系统会动态调整路径。",
+          dept: "全科门诊",
+          wait: "约 15 分钟",
+        };
+  document.querySelector(".result-title").textContent = result.title;
+  document.querySelector(".result-copy").textContent = result.copy;
+  document.querySelector(".result-dept").textContent = result.dept;
+  document.querySelector(".result-wait").textContent = result.wait;
+};
+document.querySelectorAll(".triage-symptom,.detail-choice").forEach((el) =>
   el.addEventListener("click", () => {
-    document
-      .querySelectorAll(".triage-symptom")
+    const group = el.closest(".triage-symptoms,.choice-grid");
+    group
+      .querySelectorAll("button")
       .forEach((item) => item.classList.remove("selected"));
     el.classList.add("selected");
-    const result = triageCopy[el.dataset.level];
-    document.querySelector(".result-title").textContent = result.title;
-    document.querySelector(".result-copy").textContent = result.copy;
-    document.querySelector(".result-dept").textContent = result.dept;
-    document.querySelector(".result-wait").textContent = result.wait;
+    const key = { 1: "symptom", 2: "duration", 3: "severity", 4: "risk" }[
+      el.closest(".wizard-question").dataset.question
+    ];
+    triageAnswers[key] = el.dataset.answer;
   }),
 );
-document.querySelector(".triage-confirm").addEventListener("click", () => {
-  closeOverlays();
-  showToast("路径建议已生成 · 请由现场医护人员确认");
+document.querySelector(".wizard-next").addEventListener("click", () => {
+  if (triageQuestion < 4) {
+    triageQuestion += 1;
+    updateTriageWizard();
+  } else {
+    calculateTriage();
+    document.querySelector(".wizard-next").innerHTML =
+      "建议已生成 · 关闭 <span>↗</span>";
+    document.querySelector(".wizard-next").classList.add("generated");
+    document.querySelector(".wizard-next").onclick = () => {
+      closeOverlays();
+      showToast("路径建议已生成 · 请由现场医护人员确认");
+    };
+  }
+});
+document.querySelector(".wizard-back").addEventListener("click", () => {
+  if (triageQuestion > 1) {
+    triageQuestion -= 1;
+    updateTriageWizard();
+  }
 });
 document.querySelectorAll(".date-option,.time-option").forEach((el) =>
   el.addEventListener("click", () => {
