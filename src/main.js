@@ -34,7 +34,7 @@ app.innerHTML = `
     </main>
     <footer class="footer"><div class="container footer-inner"><div class="brand footer-brand"><span class="brand-mark">C</span><span>澄明</span><small>家庭健康中枢</small></div><span>你的健康，值得被认真对待。</span><div class="footer-links"><a href="#">隐私与安全</a><a href="#">帮助中心</a><a href="#">联系我们</a></div></div></footer>
     <div class="toast" role="status" aria-live="polite"></div>
-    <div class="modal-backdrop" aria-hidden="true"><section class="booking-modal" role="dialog" aria-modal="true" aria-labelledby="booking-title"><button class="modal-close" aria-label="关闭">×</button><p class="eyebrow">预约咨询</p><h2 id="booking-title">选择一个适合你的时间</h2><p class="modal-sub">周予安医生 · 全科复诊 · 视频问诊</p><div class="date-options"><button class="date-option selected"><b>14</b><small>周五</small></button><button class="date-option"><b>15</b><small>周六</small></button><button class="date-option"><b>17</b><small>周一</small></button><button class="date-option"><b>18</b><small>周二</small></button></div><div class="time-label">可选时段</div><div class="time-options"><button class="time-option selected">15:30</button><button class="time-option">16:00</button><button class="time-option">17:30</button></div><button class="primary-btn confirm-booking">确认预约 <span>↗</span></button></section></div>
+    <div class="modal-backdrop" aria-hidden="true"><section class="booking-modal" role="dialog" aria-modal="true" aria-labelledby="booking-title"><button class="modal-close" aria-label="关闭">×</button><p class="eyebrow">智能挂号</p><h2 id="booking-title">为你推荐合适的号</h2><p class="modal-sub">根据就诊诉求、近期记录与可约时间综合推荐</p><div class="symptom-label">这次主要想解决</div><div class="symptom-options"><button class="symptom-option selected" data-symptom="sleep">睡眠与疲惫</button><button class="symptom-option" data-symptom="pressure">血压管理</button><button class="symptom-option" data-symptom="general">综合咨询</button></div><div class="recommend-label"><span>推荐号源</span><small>推荐仅供参考，急症请及时就医</small></div><div class="doctor-options"><button class="doctor-option selected" data-doctor="周予安医生" data-meta="全科 · 视频问诊" data-times="15:30,16:00,17:30"><span class="doctor-avatar large">周</span><span class="doctor-info"><b>周予安医生 <i>最匹配</i></b><small>全科 · 擅长睡眠与慢病管理</small><em>最快 周五 15:30</em></span><span class="match-score">94%</span></button><button class="doctor-option" data-doctor="韩清医生" data-meta="睡眠门诊 · 到院就诊" data-times="09:00,10:30,14:00"><span class="doctor-avatar large coral">韩</span><span class="doctor-info"><b>韩清医生</b><small>睡眠门诊 · 专注失眠评估</small><em>最快 周六 09:00</em></span><span class="match-score">88%</span></button></div><div class="schedule-head"><strong class="selected-doctor">周予安医生 · 全科 · 视频问诊</strong><span>选择时间</span></div><div class="date-options"><button class="date-option selected"><b>14</b><small>周五</small></button><button class="date-option"><b>15</b><small>周六</small></button><button class="date-option"><b>17</b><small>周一</small></button><button class="date-option"><b>18</b><small>周二</small></button></div><div class="time-label">可选时段</div><div class="time-options"><button class="time-option selected">15:30</button><button class="time-option">16:00</button><button class="time-option">17:30</button></div><button class="primary-btn confirm-booking">确认预约 <span>↗</span></button></section></div>
     <aside class="record-drawer" aria-hidden="true"><button class="drawer-close" aria-label="关闭">×</button><p class="eyebrow">健康档案</p><h2>林晓宁的健康摘要</h2><p class="drawer-sub">最近更新于今天 09:42</p><div class="drawer-stat"><span>当前关注</span><strong>睡眠质量</strong><b>↗ 8%</b></div><div class="drawer-stat"><span>近期检查</span><strong>2 份报告</strong><b class="neutral">均已查看</b></div><div class="drawer-stat"><span>用药依从</span><strong>96%</strong><b>本周稳定</b></div><button class="outline-btn">下载完整档案 <span>↓</span></button></aside>
   </div>`;
 
@@ -87,9 +87,115 @@ document.querySelectorAll(".date-option,.time-option").forEach((el) =>
     el.classList.add("selected");
   }),
 );
+const recommendationData = {
+  sleep: [
+    [
+      "周予安医生",
+      "全科 · 视频问诊",
+      "周",
+      "擅长睡眠与慢病管理",
+      "94%",
+      "15:30,16:00,17:30",
+    ],
+    [
+      "韩清医生",
+      "睡眠门诊 · 到院就诊",
+      "韩",
+      "专注失眠评估",
+      "88%",
+      "09:00,10:30,14:00",
+    ],
+  ],
+  pressure: [
+    [
+      "周予安医生",
+      "全科 · 视频问诊",
+      "周",
+      "擅长高血压长期管理",
+      "96%",
+      "15:30,16:00,17:30",
+    ],
+    [
+      "陈闻医生",
+      "心内科 · 到院就诊",
+      "陈",
+      "专注血压与心血管评估",
+      "91%",
+      "08:30,10:00,14:30",
+    ],
+  ],
+  general: [
+    [
+      "林知远医生",
+      "全科 · 视频问诊",
+      "林",
+      "擅长常见症状综合判断",
+      "93%",
+      "10:00,13:30,16:30",
+    ],
+    [
+      "周予安医生",
+      "全科 · 到院就诊",
+      "周",
+      "熟悉你的既往健康记录",
+      "90%",
+      "15:30,16:00,17:30",
+    ],
+  ],
+};
+const renderRecommendations = (key) => {
+  const options = recommendationData[key];
+  document.querySelector(".doctor-options").innerHTML = options
+    .map(
+      (item, index) =>
+        `<button class="doctor-option ${index === 0 ? "selected" : ""}" data-doctor="${item[0]}" data-meta="${item[1]}" data-times="${item[5]}"><span class="doctor-avatar large ${index ? "coral" : ""}">${item[2]}</span><span class="doctor-info"><b>${item[0]} ${index === 0 ? "<i>最匹配</i>" : ""}</b><small>${item[1]} · ${item[3]}</small><em>最快 ${index === 0 ? "周五" : "周六"} ${item[5].split(",")[0]}</em></span><span class="match-score">${item[4]}</span></button>`,
+    )
+    .join("");
+  bindDoctorOptions();
+  document.querySelector(".doctor-option").click();
+};
+const bindDoctorOptions = () =>
+  document.querySelectorAll(".doctor-option").forEach((el) =>
+    el.addEventListener("click", () => {
+      document
+        .querySelectorAll(".doctor-option")
+        .forEach((item) => item.classList.remove("selected"));
+      el.classList.add("selected");
+      document.querySelector(".selected-doctor").textContent =
+        `${el.dataset.doctor} · ${el.dataset.meta}`;
+      document.querySelector(".time-options").innerHTML = el.dataset.times
+        .split(",")
+        .map(
+          (time, index) =>
+            `<button class="time-option ${index === 0 ? "selected" : ""}">${time}</button>`,
+        )
+        .join("");
+      document.querySelectorAll(".time-option").forEach((time) =>
+        time.addEventListener("click", () => {
+          document
+            .querySelectorAll(".time-option")
+            .forEach((item) => item.classList.remove("selected"));
+          time.classList.add("selected");
+        }),
+      );
+    }),
+  );
+bindDoctorOptions();
+document.querySelectorAll(".symptom-option").forEach((el) =>
+  el.addEventListener("click", () => {
+    document
+      .querySelectorAll(".symptom-option")
+      .forEach((item) => item.classList.remove("selected"));
+    el.classList.add("selected");
+    renderRecommendations(el.dataset.symptom);
+  }),
+);
 document.querySelector(".confirm-booking").addEventListener("click", () => {
+  const doctor = document.querySelector(".doctor-option.selected").dataset
+    .doctor;
+  const time = document.querySelector(".time-option.selected").textContent;
   closeOverlays();
-  showToast("预约已暂存 · 周五 15:30 视频问诊");
+  showToast(`预约已暂存 · ${doctor} · ${time}`);
 });
 document.querySelectorAll(".main-nav a").forEach((link) =>
   link.addEventListener("click", () => {
