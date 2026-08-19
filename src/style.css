@@ -825,7 +825,9 @@ h2 em {
   pointer-events: auto;
 }
 .booking-modal {
-  width: min(450px, calc(100% - 36px));
+  width: min(620px, calc(100% - 36px));
+  max-height: min(860px, calc(100dvh - 32px));
+  overflow-y: auto;
   background: var(--paper);
   border-radius: 14px;
   padding: 30px;
@@ -858,6 +860,121 @@ h2 em {
   font-size: 12px;
   color: var(--muted);
   margin: 0 0 24px;
+}
+.symptom-label,
+.time-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: #6f8179;
+  margin-bottom: 9px;
+}
+.symptom-options {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+.symptom-option {
+  border: 1px solid var(--line);
+  background: #fff;
+  border-radius: 7px;
+  padding: 9px 12px;
+  font-size: 11px;
+  color: #61746c;
+}
+.symptom-option.selected {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: #fff;
+}
+.recommend-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 9px;
+}
+.recommend-label span {
+  font-size: 11px;
+  font-weight: 600;
+}
+.recommend-label small {
+  font-size: 9px;
+  color: #9aa7a2;
+}
+.doctor-options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 22px;
+}
+.doctor-option {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: start;
+  gap: 10px;
+  text-align: left;
+  border: 1px solid var(--line);
+  background: #fff;
+  border-radius: 9px;
+  padding: 13px;
+  transition: 0.2s;
+}
+.doctor-option:hover,
+.doctor-option.selected {
+  border-color: #75a78c;
+  box-shadow: 0 5px 16px rgba(46, 98, 76, 0.08);
+}
+.doctor-avatar.large {
+  width: 34px;
+  height: 34px;
+}
+.doctor-avatar.coral {
+  background: var(--coral-soft);
+  color: #bd624f;
+}
+.doctor-info b {
+  display: block;
+  font-size: 12px;
+}
+.doctor-info b i {
+  font-style: normal;
+  font-size: 8px;
+  color: #c45f4a;
+  background: var(--coral-soft);
+  padding: 3px 5px;
+  border-radius: 4px;
+  margin-left: 3px;
+}
+.doctor-info small,
+.doctor-info em {
+  display: block;
+  font-size: 9px;
+  color: var(--muted);
+  margin-top: 4px;
+  font-style: normal;
+  line-height: 1.35;
+}
+.doctor-info em {
+  color: #5c9270;
+}
+.match-score {
+  font-size: 11px;
+  color: #5e9972;
+  font-weight: 600;
+}
+.schedule-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid var(--line);
+  padding-top: 17px;
+  margin-bottom: 11px;
+}
+.schedule-head strong {
+  font-size: 11px;
+}
+.schedule-head span {
+  font-size: 10px;
+  color: var(--muted);
 }
 .date-options {
   display: grid;
